@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel = "stylesheet" type = "text/css" href = "stylesheet.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
   </head>
   <body>
+    
     <script>
+
+
+          /////////////////////Directly below is a normal part of their code////////////////////////////////////////////
 
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
-
+        $('<div class = "outer"></div>').appendTo("body");
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweet = $('<div class = "itweet"></div>');
+          //TOP - add a time stamp to the ////////////////////////////////////////
+          var time = new Date().getTime();
+          var date = new Date(time);
+          var dateString = date.toString();
+          var prettyDate = dateString.substring(0, dateString.length - 18);
+          //Below is a normal part of there code slightly updated where I've noted///////////////////////
+          $tweet.text(':      ' + tweet.message + '  - Posted: ' + prettyDate); ////I added the Post at the end
           $tweet.appendTo($body);
           index -= 1;
+        ///Creates a button with username so they can click to see users tweets//////////////////////////
+          var $link = $('<button class = "link"></button>');
+          $link.text('@' + tweet.user);
+          $link.prependTo($tweet);
         }
+        ///Creates a button with some words, appends it to the body, and reloads the page when you click the button/////
+        var button = $("<button></button>").attr("type", "button").attr("class", "refresh");
+        button.text("Refresh Tweets");
+        button.appendTo("body");
+        $("button.refresh").click(function(){
+          location.reload(); 
+        })
+
+        ///Functionality to filter by user/////////////////////////////////////////////////////////////////////////////////
+
+        $("button.link").click(function(){
+          var findUser1 = button.text();
+          var findUser2 = findUser1.substring(1,findUser1.length - 1);
+          $body.html('');
+          $('<div class = "outer"></div>').appendTo("body");
+          var index2 = streams.users.findUser2.length - 1;
+          
+        })
 
       });
-
     </script>
   </body>
 </html>
