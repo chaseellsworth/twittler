@@ -45,13 +45,30 @@
         ///Functionality to filter by user/////////////////////////////////////////////////////////////////////////////////
 
         $("button.link").click(function(){
-          var findUser1 = button.text();
-          var findUser2 = findUser1.substring(1,findUser1.length - 1);
+          var findUser1 = $(this).text();                       //attr('data-value');
+          var findUser2 = findUser1.substring(1,findUser1.length);
           $body.html('');
           $('<div class = "outer"></div>').appendTo("body");
-          var index2 = streams.users.findUser2.length - 1;
-          
-        })
+          var userTweets = streams['users'][findUser2];
+          var index = userTweets.length - 1;
+          while(index >= 0){
+            var tweet = userTweets[index];
+            var $tweet = $('<div class = "itweet"></div>');
+            //TOP - add a time stamp to the ////////////////////////////////////////
+            var time = new Date().getTime();
+            var date = new Date(time);
+            var dateString = date.toString();
+            var prettyDate = dateString.substring(0, dateString.length - 18);
+            //Below is a normal part of there code slightly updated where I've noted///////////////////////
+            $tweet.text( '@' + findUser2 +':      ' + tweet.message + '  - Posted: ' + prettyDate); ////I added the Post at the end
+            $tweet.appendTo($body);
+            index -= 1;
+               
+          }
+        });
+        
+
+
 
       });
     </script>

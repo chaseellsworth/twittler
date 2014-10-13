@@ -1,17 +1,17 @@
 
 .itweet {
-	margin-left: 20%;
+	margin-left: 15%;
 	border-bottom: 1px solid #e1e8ed;
 	padding: 9px 12px;
 	display: block;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	width: 60%;
+	width: 70%;
 	background-color: #c2dfff;
 }
 
 
 button {
-	margin-left: 20%;
+	margin-left: 15%;
 	background-color: #55acee;
 	display: inline-block;
 	font-size: 14px;
@@ -23,7 +23,7 @@ button {
 
 .outer{
 	margin-top: 5%;
-	width: 60%;
+	width: 70%;
 }
 
 button.link { 
